@@ -1,20 +1,38 @@
-'use client'
-import React from "react";
 
+'use client'
+import React from 'react'
+import image from 'next/image'
+import Link from 'next/link'
+import Image from 'next/image'
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-
-
-const Sidebar = ({ user }: SiderbarProps) => {
-  const pathname = usePathname();
-
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+const MobileNav = ({user}: MobileNavProps) => {
+    const pathname = usePathname();
   return (
-    <section className=" bg-white -300 sticky left-0 top-0 flex h-screen w-fit flex-col  justify-between border-r border-gray-200  pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[355px]">
-      <nav className="flex flex-col gap-4">
+    <section className="w-full max-w-[264px] flex flex-col gap-4">
+      <Sheet>
+  <SheetTrigger>
+    <Image
+    src="/icons/hamburger.svg"
+    width={30}
+    height={30}
+    alt="menu"
+    className="cursor-pointer"
+    />
+  </SheetTrigger>
+  <SheetContent side="left">
+    
         <Link
           href="/"
           className="mb-12 flex cursor-pointer items-center gap-2"
@@ -47,12 +65,12 @@ const Sidebar = ({ user }: SiderbarProps) => {
               <div
               className="relative
               size-6">
-               <Image
+               <image
                src={item.imgURL}
                alt={item.label}
                fill>
 
-               </Image>
+               </image>
               </div>
               <div className="text-black">
               <p>{item.label}</p>
@@ -60,11 +78,11 @@ const Sidebar = ({ user }: SiderbarProps) => {
             </Link>
           );
         })}
-        USER
-      </nav>
-       FOOTER
+    
+  </SheetContent>
+</Sheet>
     </section>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default MobileNav

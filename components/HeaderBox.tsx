@@ -13,7 +13,7 @@ const HeaderBox = ({type ="title",title,subtext,
             </span>
            )}
        </h1>
-       <p className="header-box-subtext">
+       <p className="text-14 lg:text-16 font-normal text-gray-600">
            {subtext}
        </p>
    </div>
